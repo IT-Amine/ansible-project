@@ -1,0 +1,4 @@
+mgmt_l2_interfaces:
+- name: GigabitEthernet1/0/1
+  access:
+    vlan: 98

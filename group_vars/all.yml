@@ -1,0 +1,14 @@
+---
+# Paramètres de connexion Ansible pour Cisco IOS
+ansible_connection: ansible.netcommon.network_cli
+ansible_network_os: cisco.ios.ios
+ansible_user: user_switch
+ansible_password: "MDP_SWITCH_CISCO"
+ansible_become: yes
+ansible_become_method: enable
+ansible_become_password: "MDP_SWITCH_CISCO"
+
+# Ton socle réseau intouchable (Management)
+mgmt_vlans:
+  - name: MGT_ANSIBLE
+    vlan_id: 98

@@ -1,0 +1,254 @@
+vlans_par_groupe:
+  l2_switches:
+  - &id001
+    name: Administration
+    vlan_id: 11
+  - &id002
+    name: Certification
+    vlan_id: 21
+  - &id003
+    name: Wifi_visiteurs
+    vlan_id: 81
+  - &id004
+    name: Conseil_technique
+    vlan_id: 61
+  - &id005
+    name: Referentiels
+    vlan_id: 31
+  - &id006
+    name: Services_techniques
+    vlan_id: 71
+  - &id007
+    name: Formations_pro
+    vlan_id: 41
+  l3_switches:
+  - *id001
+  - *id002
+  - *id003
+  - *id004
+  - *id005
+  - *id006
+  - *id007
+  - name: Serveurs
+    vlan_id: 54
+  - name: Inter_co
+    vlan_id: 14
+interfaces_par_groupe:
+  l2_switches:
+  - name: FastEthernet0/2
+    access:
+      vlan: 11
+  - name: FastEthernet0/3
+    access:
+      vlan: 11
+  - name: FastEthernet0/4
+    access:
+      vlan: 11
+  - name: FastEthernet0/5
+    access:
+      vlan: 11
+  - name: FastEthernet0/6
+    access:
+      vlan: 11
+  - name: FastEthernet0/7
+    access:
+      vlan: 21
+  - name: FastEthernet0/8
+    access:
+      vlan: 21
+  - name: FastEthernet0/9
+    access:
+      vlan: 21
+  - name: FastEthernet0/10
+    access:
+      vlan: 21
+  - name: FastEthernet0/11
+    access:
+      vlan: 21
+  - name: FastEthernet0/12
+    access:
+      vlan: 21
+  - name: FastEthernet0/13
+    access:
+      vlan: 81
+  - name: FastEthernet0/14
+    access:
+      vlan: 81
+  - name: FastEthernet0/15
+    access:
+      vlan: 81
+  - name: FastEthernet0/16
+    access:
+      vlan: 81
+  - name: FastEthernet0/17
+    access:
+      vlan: 81
+  - name: FastEthernet0/18
+    access:
+      vlan: 81
+  - name: FastEthernet0/19
+    access:
+      vlan: 61
+  - name: FastEthernet0/20
+    access:
+      vlan: 61
+  - name: FastEthernet0/21
+    access:
+      vlan: 61
+  - name: FastEthernet0/22
+    access:
+      vlan: 61
+  - name: FastEthernet0/23
+    access:
+      vlan: 61
+  - name: FastEthernet0/24
+    access:
+      vlan: 61
+  - name: FastEthernet0/25
+    access:
+      vlan: 31
+  - name: FastEthernet0/26
+    access:
+      vlan: 31
+  - name: FastEthernet0/27
+    access:
+      vlan: 31
+  - name: FastEthernet0/28
+    access:
+      vlan: 31
+  - name: FastEthernet0/29
+    access:
+      vlan: 31
+  - name: FastEthernet0/30
+    access:
+      vlan: 31
+  - name: FastEthernet0/31
+    access:
+      vlan: 71
+  - name: FastEthernet0/32
+    access:
+      vlan: 71
+  - name: FastEthernet0/33
+    access:
+      vlan: 71
+  - name: FastEthernet0/34
+    access:
+      vlan: 71
+  - name: FastEthernet0/35
+    access:
+      vlan: 71
+  - name: FastEthernet0/36
+    access:
+      vlan: 71
+  - name: FastEthernet0/37
+    access:
+      vlan: 41
+  - name: FastEthernet0/38
+    access:
+      vlan: 41
+  - name: FastEthernet0/39
+    access:
+      vlan: 41
+  - name: FastEthernet0/40
+    access:
+      vlan: 41
+  - name: FastEthernet0/41
+    access:
+      vlan: 41
+  - name: FastEthernet0/42
+    access:
+      vlan: 41
+  - name: FastEthernet0/48
+    trunk:
+      allowed_vlans:
+      - '11'
+      - '21'
+      - '31'
+      - '41'
+      - '61'
+      - '71'
+      - '81'
+      encapsulation: dot1q
+    mode: trunk
+  l3_switches:
+  - name: GigabitEthernet1/0/2
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/3
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/4
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/5
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/6
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/7
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/8
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/9
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/10
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/11
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/12
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/22
+    trunk:
+      allowed_vlans:
+      - '11'
+      - '21'
+      - '31'
+      - '41'
+      - '61'
+      - '71'
+      - '81'
+      encapsulation: dot1q
+    mode: trunk
+  - name: GigabitEthernet1/0/24
+    trunk:
+      allowed_vlans:
+      - '14'
+      encapsulation: dot1q
+    mode: trunk
+l3_interfaces_par_groupe:
+  l2_switches: []
+  l3_switches:
+  - name: Vlan11
+    ipv4:
+    - address: 192.168.4.1 255.255.255.192
+  - name: Vlan21
+    ipv4:
+    - address: 192.168.4.65 255.255.255.224
+  - name: Vlan81
+    ipv4:
+    - address: 192.168.4.97 255.255.255.224
+  - name: Vlan61
+    ipv4:
+    - address: 192.168.4.129 255.255.255.224
+  - name: Vlan31
+    ipv4:
+    - address: 192.168.4.161 255.255.255.224
+  - name: Vlan71
+    ipv4:
+    - address: 192.168.4.193 255.255.255.240
+  - name: Vlan41
+    ipv4:
+    - address: 192.168.4.209 255.255.255.240
+  - name: Vlan54
+    ipv4:
+    - address: 172.16.54.1 255.255.255.0
+  - name: Vlan14
+    ipv4:
+    - address: 192.168.14.253 255.255.255.248

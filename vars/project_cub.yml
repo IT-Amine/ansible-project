@@ -1,0 +1,156 @@
+vlans_par_groupe:
+  l2_switches:
+  - name: Clients
+    vlan_id: 10
+  - name: Administration
+    vlan_id: 20
+  l3_switches:
+  - name: Clients
+    vlan_id: 10
+  - name: Administration
+    vlan_id: 20
+  - name: INTER-CO
+    vlan_id: 2
+  - name: PRODUCTION
+    vlan_id: 54
+interfaces_par_groupe:
+  l2_switches:
+  - name: FastEthernet0/2
+    access:
+      vlan: 20
+  - name: FastEthernet0/3
+    access:
+      vlan: 20
+  - name: FastEthernet0/4
+    access:
+      vlan: 20
+  - name: FastEthernet0/5
+    access:
+      vlan: 20
+  - name: FastEthernet0/6
+    access:
+      vlan: 20
+  - name: FastEthernet0/7
+    access:
+      vlan: 20
+  - name: FastEthernet0/8
+    access:
+      vlan: 20
+  - name: FastEthernet0/9
+    access:
+      vlan: 20
+  - name: FastEthernet0/10
+    access:
+      vlan: 20
+  - name: FastEthernet0/11
+    access:
+      vlan: 20
+  - name: FastEthernet0/12
+    access:
+      vlan: 20
+  - name: FastEthernet0/25
+    access:
+      vlan: 10
+  - name: FastEthernet0/26
+    access:
+      vlan: 10
+  - name: FastEthernet0/27
+    access:
+      vlan: 10
+  - name: FastEthernet0/28
+    access:
+      vlan: 10
+  - name: FastEthernet0/29
+    access:
+      vlan: 10
+  - name: FastEthernet0/30
+    access:
+      vlan: 10
+  - name: FastEthernet0/31
+    access:
+      vlan: 10
+  - name: FastEthernet0/32
+    access:
+      vlan: 10
+  - name: FastEthernet0/33
+    access:
+      vlan: 10
+  - name: FastEthernet0/34
+    access:
+      vlan: 10
+  - name: FastEthernet0/35
+    access:
+      vlan: 10
+  - name: FastEthernet0/36
+    access:
+      vlan: 10
+  - name: FastEthernet0/48
+    trunk:
+      allowed_vlans:
+      - '10'
+      - '20'
+      encapsulation: dot1q
+    mode: trunk
+  l3_switches:
+  - name: GigabitEthernet1/0/2
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/3
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/4
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/5
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/6
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/7
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/8
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/9
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/10
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/11
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/12
+    access:
+      vlan: 54
+  - name: GigabitEthernet1/0/22
+    trunk:
+      allowed_vlans:
+      - '10'
+      - '20'
+      encapsulation: dot1q
+    mode: trunk
+  - name: GigabitEthernet1/0/24
+    trunk:
+      allowed_vlans:
+      - '2'
+      - '20'
+      encapsulation: dot1q
+    mode: trunk
+l3_interfaces_par_groupe:
+  l2_switches: []
+  l3_switches:
+  - name: Vlan2
+    ipv4:
+    - address: 192.168.44.253 255.255.255.248
+  - name: Vlan10
+    ipv4:
+    - address: 192.168.4.190 255.255.255.192
+  - name: Vlan20
+    ipv4:
+    - address: 192.168.4.206 255.255.255.240
+  - name: Vlan54
+    ipv4:
+    - address: 192.168.4.126 255.255.255.128
