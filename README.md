@@ -5,6 +5,18 @@ Ce projet vise à automatiser la reconfiguration complète d'une infrastructure 
 
 L'objectif principal est de pouvoir basculer l'ensemble du réseau entre deux environnements de production distincts (**CUB** et **ECOCERT**) de manière fiable, rapide et sécurisée. L'automatisation garantit que l'ancienne configuration est proprement nettoyée avant l'application de la nouvelle, tout en maintenant l'accès d'administration continu aux équipements.
 
+Pour plus de détails sur la stratégie de migration et les mécanismes techniques de bascule, vous pouvez consulter le document explicatif complet [en cliquant ici](./Contexte.md).
+
+## Installation et Prérequis
+
+Avant d'exécuter les playbooks, vous devez installer les dépendances nécessaires sur votre machine. Le projet s'appuie sur des bibliothèques Python spécifiques (`paramiko`, `ansible-pylibssh`) en plus d'Ansible, afin de garantir une communication SSH performante et stable avec les équipements Cisco IOS.
+
+Pour installer ces prérequis, exécutez la commande suivante à la racine du projet :
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Arborescence Ansible
 
 L'architecture du projet respecte les standards de l'Infrastructure as Code (IaC) :
