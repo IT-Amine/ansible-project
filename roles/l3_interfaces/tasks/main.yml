@@ -1,4 +1,10 @@
 ---
+- name: Activer le routage IPv4 global (ip routing)
+  cisco.ios.ios_config:
+    lines:
+      - ip routing
+  when: project_l3_interfaces | default([]) | length > 0
+
 - name: Synchronisation des interfaces de routage SVI (L3)
   cisco.ios.ios_l3_interfaces:
     config: "{{ project_l3_interfaces | default([]) }}"
