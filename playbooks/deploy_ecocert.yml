@@ -1,0 +1,31 @@
+---
+- name: "Déploiement ECOCERT - Switchs L2"
+  hosts: l2_switches
+  gather_facts: false
+  vars_files:
+    - "../vars/project_ecocert.yml"
+  
+  roles:
+    - role: ../roles/vlans
+      vars:
+        project_vlans: "{{ vlans_par_groupe['l2_switches'] | default([]) }}"
+    - role: ../roles/l2_interfaces
+      vars:
+        project_l2_interfaces: "{{ interfaces_par_groupe['l2_switches'] | default([]) }}"
+
+- name: "Déploiement ECOCERT - Switchs L3"
+  hosts: l3_switches
+  gather_facts: false
+  vars_files:
+    - "../vars/project_ecocert.yml"
+  
+  roles:
+    - role: ../roles/vlans
+      vars:
+        project_vlans: "{{ vlans_par_groupe['l3_switches'] | default([]) }}"
+    - role: ../roles/l2_interfaces
+      vars:
+        project_l2_interfaces: "{{ interfaces_par_groupe['l3_switches'] | default([]) }}"
+    - role: ../roles/l3_interfaces
+      vars:
+        project_l3_interfaces: "{{ l3_interfaces_par_groupe['l3_switches'] | default([]) }}"

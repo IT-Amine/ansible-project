@@ -1,0 +1,5 @@
+---
+- name: Synchronisation des affectations de ports L2
+  cisco.ios.ios_l2_interfaces:
+    config: "{{ mgmt_l2_interfaces + project_l2_interfaces | default([]) }}"
+    state: overridden

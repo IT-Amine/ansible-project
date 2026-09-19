@@ -19,7 +19,7 @@ pip install -r requirements.txt
 
 ## Arborescence Ansible
 
-L'architecture du projet respecte les standards de l'Infrastructure as Code (IaC) :
+L'architecture du projet respecte les standards de l'Infrastructure as Code (IaC) et la philosophie **KISS** (un playbook simple par contexte, avec des rôles réutilisables) :
 
 ```text
 ansible-projet/
@@ -34,20 +34,25 @@ ansible-projet/
 ├── vars/
 │   ├── project_cub.yml        # Architecture complète du projet CUB
 │   └── project_ecocert.yml    # Architecture complète du projet ECOCERT
+├── roles/                     # Rôles réutilisables
+│   ├── vlans/                 # Rôle pour la configuration des VLANs
+│   ├── l2_interfaces/         # Rôle pour les ports physiques L2
+│   └── l3_interfaces/         # Rôle pour les interfaces de routage SVI (L3)
 └── playbooks/
-    └── deploy_project.yml     # Le moteur d'automatisation
+    ├── deploy_cub.yml         # Déploiement spécifique au contexte CUB
+    └── deploy_ecocert.yml     # Déploiement spécifique au contexte ECOCERT
 ```
 
 ## Comment utiliser l'automatisation ?
 
-Le déploiement se fait en appelant le playbook principal et en lui passant le nom du projet cible via une variable externe (`target_project`).
+Le déploiement est grandement simplifié. Chaque contexte possède son propre playbook qui orchestre les rôles de configuration (VLANs, L2, L3) sans nécessiter d'inputs de variables complexes dans la ligne de commande.
 
 **Pour déployer l'environnement CUB :**
 ```bash
-ansible-playbook -i inventory/hosts.yml playbooks/deploy_project.yml -e target_project=cub
+ansible-playbook -i inventory/hosts.yml playbooks/deploy_cub.yml
 ```
 
 **Pour déployer l'environnement ECOCERT :**
 ```bash
-ansible-playbook -i inventory/hosts.yml playbooks/deploy_project.yml -e target_project=ecocert
+ansible-playbook -i inventory/hosts.yml playbooks/deploy_ecocert.yml
 ```

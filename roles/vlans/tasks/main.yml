@@ -1,0 +1,5 @@
+---
+- name: Synchronisation de la base VLANs
+  cisco.ios.ios_vlans:
+    config: "{{ mgmt_vlans + project_vlans | default([]) }}"
+    state: overridden

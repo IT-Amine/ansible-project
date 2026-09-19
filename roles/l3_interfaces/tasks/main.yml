@@ -1,0 +1,6 @@
+---
+- name: Synchronisation des interfaces de routage SVI (L3)
+  cisco.ios.ios_l3_interfaces:
+    config: "{{ project_l3_interfaces | default([]) }}"
+    state: overridden
+  when: project_l3_interfaces | default([]) | length > 0
