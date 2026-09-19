@@ -23,6 +23,7 @@ L'architecture du projet respecte les standards de l'Infrastructure as Code (IaC
 
 ```text
 ansible-projet/
+├── ansible.cfg                # Configuration Ansible (inventaire par défaut, chemin des rôles)
 ├── README.md                  # Ce fichier (présentation et utilisation)
 ├── Contexte.md                # Explications techniques détaillées de la stratégie
 ├── inventory/
@@ -45,14 +46,16 @@ ansible-projet/
 
 ## Comment utiliser l'automatisation ?
 
-Le déploiement est grandement simplifié. Chaque contexte possède son propre playbook qui orchestre les rôles de configuration (VLANs, L2, L3) sans nécessiter d'inputs de variables complexes dans la ligne de commande.
+Le déploiement est grandement simplifié grâce à la configuration présente dans `ansible.cfg` (qui charge l'inventaire automatiquement) et à l'organisation par rôles. 
+
+Chaque contexte possède son propre playbook qui orchestre les rôles de configuration (VLANs, L2, L3) sans nécessiter d'inputs de variables complexes dans la ligne de commande.
 
 **Pour déployer l'environnement CUB :**
 ```bash
-ansible-playbook -i inventory/hosts.yml playbooks/deploy_cub.yml
+ansible-playbook playbooks/deploy_cub.yml
 ```
 
 **Pour déployer l'environnement ECOCERT :**
 ```bash
-ansible-playbook -i inventory/hosts.yml playbooks/deploy_ecocert.yml
+ansible-playbook playbooks/deploy_ecocert.yml
 ```
