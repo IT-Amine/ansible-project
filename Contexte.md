@@ -27,4 +27,6 @@ Lorsqu'Ansible applique la configuration avec le paramètre `state: overridden` 
 ## 3. Spécificités d'Architecture Réseau
 - **Management Hors-Bande Logique :** Le lien de management (VLAN 98) est physiquement séparé du flux de production sur les ports numéro 1.
 - **Trunk Filtré :** Le lien Trunk entre les commutateurs L2 et L3 ne transporte strictement que les VLANs du projet en cours. Le VLAN 98 en est explicitement exclu pour forcer le passage par les ports de management dédiés.
+- **Routage L3 Avancé et Relais DHCP :** L'automatisation active globalement le routage sur le cœur de réseau (`ip routing`). Elle configure également de manière dynamique les agents de relais DHCP (`ip helper-address`) sur les VLANs concernés.
+- **Délégation du NAT/PAT :** Le cœur de réseau est configuré avec une route par défaut (`0.0.0.0`) pointant automatiquement vers le pare-feu (Stormshield). C'est ce dernier qui prend en charge la sécurité de bordure et le NAT/PAT, respectant ainsi la séparation des rôles.
 - **Sécurité des identifiants :** Les informations sensibles (mots de passe enable et SSH) ne sont pas stockées en clair dans les playbooks. Il est recommandé de chiffrer ces variables sensibles via **Ansible Vault**.
