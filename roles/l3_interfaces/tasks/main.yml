@@ -10,3 +10,17 @@
     config: "{{ project_l3_interfaces | default([]) }}"
     state: overridden
   when: project_l3_interfaces | default([]) | length > 0
+
+- name: Configuration des relais DHCP (ip helper-address)
+  cisco.ios.ios_config:
+    parents: "interface {{ item.name }}"
+    lines:
+      - "ip helper-address {{ item.helper }}"
+  loop: "{{ project_l3_interfaces | default([]) }}"
+  when: item.helper is defined
+
+- name: Configuration de la route par defaut (Passerelle / Firewall)
+  cisco.ios.ios_config:
+    lines:
+      - "ip route 0.0.0.0 0.0.0.0 {{ project_default_route }}"
+  when: project_default_route is defined

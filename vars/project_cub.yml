@@ -154,3 +154,4 @@ l3_interfaces_par_groupe:
   - name: Vlan54
     ipv4:
     - address: 192.168.4.126 255.255.255.128
+project_default_route: 192.168.44.254

@@ -228,27 +228,36 @@ l3_interfaces_par_groupe:
   - name: Vlan11
     ipv4:
     - address: 192.168.4.1 255.255.255.192
+    helper: 172.16.54.2
   - name: Vlan21
     ipv4:
     - address: 192.168.4.65 255.255.255.224
+    helper: 172.16.54.2
   - name: Vlan81
     ipv4:
     - address: 192.168.4.97 255.255.255.224
+    helper: 172.16.54.2
   - name: Vlan61
     ipv4:
     - address: 192.168.4.129 255.255.255.224
+    helper: 172.16.54.2
   - name: Vlan31
     ipv4:
     - address: 192.168.4.161 255.255.255.224
+    helper: 172.16.54.2
   - name: Vlan71
     ipv4:
     - address: 192.168.4.193 255.255.255.240
+    helper: 172.16.54.2
   - name: Vlan41
     ipv4:
     - address: 192.168.4.209 255.255.255.240
+    helper: 172.16.54.2
   - name: Vlan54
     ipv4:
     - address: 172.16.54.1 255.255.255.0
   - name: Vlan14
     ipv4:
     - address: 192.168.14.253 255.255.255.248
+
+project_default_route: 192.168.14.254
